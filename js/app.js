@@ -1,6 +1,5 @@
 // Lab Arcade — lógica de interface, eventos e cálculos.
-// Persistência híbrida: localStorage (UX imediata/offline) + Supabase (js/sync.js).
-import * as sync from './sync.js';
+// Persistência: localStorage (funciona offline).
 
 // O Service Worker permite abrir e calcular sem internet.
 if ('serviceWorker' in navigator) {
@@ -145,7 +144,6 @@ solEl.addEventListener('change', function () {
   restore(cur.id);                     // restaura volume e marcações da nova receita
   save();
   render();
-  sync.pull(cur.id);
 });
 presetsEl.addEventListener('click', function (e) {
   var b = e.target.closest('.preset');
@@ -261,7 +259,6 @@ function bestConc(x) { var a = Math.abs(x); return a >= 1 ? fn(x) + ' M' : a >= 
 function bestMol(x) { var a = Math.abs(x); return a >= 1 ? fn(x) + ' mol' : a >= 1e-3 ? fn(x * 1e3) + ' mmol' : a >= 1e-6 ? fn(x * 1e6) + ' µmol' : fn(x * 1e9) + ' nmol'; }
 function wire(boxId, fnc) { var b = g(boxId); b.addEventListener('input', fnc); b.addEventListener('change', fnc); }
 
-
 // ----- estoque a partir da massa molar -----
 g('modeEst').innerHTML =
   '<section aria-labelledby="he1">' + stageH('he1', 'FASE 1', 'COMPOSTO') + '<div id="estIn"><div class="fields">' +
@@ -371,7 +368,6 @@ function setMode(m) {
   curMode = m;
   save();
   MODES[m][1]();
-  if (m === 'sol') sync.pull(cur.id); else if (m === 'cel') sync.pull('cel');
 }
 document.querySelector('.tabs').addEventListener('click', function (e) { var t = e.target.closest('.tab'); if (t) setMode(t.dataset.mode); });
 
@@ -429,7 +425,6 @@ up.addEventListener('click', function () {
   try { window.scrollTo({ top: 0, behavior: calm ? 'auto' : 'smooth' }); } catch { window.scrollTo(0, 0); }
 });
 
-
 // ---------- persistência híbrida: localStorage + Supabase ----------
 var curMode = 'sol';
 var LS_KEY = 'labarcade';
@@ -473,59 +468,12 @@ function stash(scope) {          // grava só localmente
   save();
   return s;
 }
-function touch(scope) {          // alteração do usuário: grava local e envia ao Supabase
-  sync.push(scope, stash(scope));
-}
-
-// aceita do servidor só chaves conhecidas, textos curtos e marcações true
-function cleanState(scope, st) {
-  var out = { inputs: {}, checks: {} }, pre = prefixOf(scope);
-  var keys = scope === 'cel' ? CEL_KEYS : ['vol'];
-  st = st && typeof st === 'object' ? st : {};
-  keys.forEach(function (k) {
-    var v = st.inputs && st.inputs[k];
-    if (typeof v === 'string' && v.length <= 40) out.inputs[k] = v;
-  });
-  Object.keys(st.checks || {}).forEach(function (k) {
-    if (st.checks[k] === true && k.indexOf(pre) === 0 && /^[a-z0-9_-]{1,16}$/.test(k)) out.checks[k] = true;
-  });
-  return out;
-}
-
-function onRemote(scope, st, rt) {
-  st = cleanState(scope, st);
-  if (scope !== 'cel' && scope !== cur.id) {            // receita que não está aberta: só guarda
-    store.rec[scope] = { inputs: st.inputs, checks: st.checks, rt: rt };
-    save();
-    return;
-  }
-  var before = JSON.stringify(snapshot(scope));
-  applyState(scope, st);
-  var changed = before !== JSON.stringify(snapshot(scope));
-  store.rec[scope] = Object.assign(snapshot(scope), { rt: rt });
-  save();
-  if (!changed) return;
-  if (scope === 'cel' && curMode === 'cel') renderCel();   // renderCel/render chamam updateXp → barra de XP
-  else if (scope === cur.id && curMode === 'sol') render();
-}
-
-var syncTag = document.getElementById('syncTag');
-var SYNC_TXT = { local: 'SYNC: SÓ NESTE PC', online: 'SYNC: ONLINE', offline: 'SYNC: OFFLINE (SALVO NO PC)' };
-function onStatus(s) {
-  syncTag.hidden = false;
-  syncTag.dataset.s = s;
-  syncTag.textContent = SYNC_TXT[s]; // não exibe o código do laboratório na tela
-}
+function touch(scope) { stash(scope); }   // alteração do usuário: grava local
 
 // ---------- inicialização ----------
 var sv = S.filter(function (s) { return s.id === store.sol; })[0];
 if (sv) { cur = sv; solEl.value = sv.id; }
 restore(cur.id);
 applyState('cel', store.rec.cel);
-sync.init({
-  onRemote: onRemote,
-  onStatus: onStatus,
-  getRt: function (scope) { return (store.rec[scope] || {}).rt || 0; },
-  onSynced: function (scope, rt) { if (store.rec[scope]) { store.rec[scope].rt = rt; save(); } }
-});
+
 setMode(MODES[store.mode] ? store.mode : 'sol');

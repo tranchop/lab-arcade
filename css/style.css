@@ -204,9 +204,6 @@ footer a { color: var(--cyan); }
 
 /* início do modo e status de sincronização */
 .tag-start { margin-top: 8px; color: var(--yellow); }
-.tag-sync { margin-top: 8px; color: var(--dim); }
-.tag-sync[data-s="online"] { color: var(--green); }
-.tag-sync[data-s="offline"] { color: var(--orange); }
 
 /* tabela de referência de semeadura */
 .tbl-wrap { overflow-x: auto; padding: 8px 10px; }
