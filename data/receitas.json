@@ -230,6 +230,164 @@
     ]
   },
   {
+    "id": "alcool",
+    "cat": "LIMPEZA",
+    "name": "Álcool 70%",
+    "sub": "750 mL de álcool 96% + 250 mL de água por litro",
+    "acc": "#ff5470",
+    "def": 1000,
+    "parts": [
+      {
+        "k": "alc",
+        "n": "Álcool 96%",
+        "t": "vol",
+        "per": 750,
+        "sub": "750 mL / L"
+      },
+      {
+        "k": "agua",
+        "n": "Água destilada",
+        "t": "vol",
+        "per": 250,
+        "sub": "250 mL / L"
+      }
+    ],
+    "steps": [
+      "Meça {alc} de álcool 96%.",
+      "Adicione {agua} de água destilada, misture e identifique o frasco."
+    ],
+    "tab": "prep"
+  },
+  {
+    "id": "lyso",
+    "cat": "LIMPEZA",
+    "name": "Lysoform 2,5%",
+    "sub": "25 mL por litro",
+    "acc": "#c98a5b",
+    "def": 1000,
+    "parts": [
+      {
+        "k": "ly",
+        "n": "Lysoform",
+        "t": "vol",
+        "per": 25
+      },
+      {
+        "k": "agua",
+        "n": "Água destilada",
+        "t": "vol",
+        "per": 975
+      }
+    ],
+    "steps": [
+      "Meça {ly} de Lysoform.",
+      "Adicione {agua} de água destilada, misture e identifique o frasco."
+    ],
+    "tab": "prep"
+  },
+  {
+    "id": "cloro",
+    "cat": "LIMPEZA",
+    "name": "Hipoclorito 0,1%",
+    "sub": "Cloro 1% diluído 1:10",
+    "acc": "#ff7a59",
+    "def": 1000,
+    "parts": [
+      {
+        "k": "cl",
+        "n": "Cloro a 1%",
+        "t": "vol",
+        "per": 100
+      },
+      {
+        "k": "agua",
+        "n": "Água destilada",
+        "t": "vol",
+        "per": 900
+      }
+    ],
+    "steps": [
+      "Meça {cl} de cloro a 1%.",
+      "Adicione {agua} de água destilada, misture e identifique o frasco."
+    ],
+    "tab": "prep"
+  },
+  {
+    "id": "enz",
+    "cat": "LIMPEZA",
+    "name": "Detergente enzimático",
+    "sub": "1 mL por litro",
+    "acc": "#b9a06a",
+    "def": 1000,
+    "parts": [
+      {
+        "k": "en",
+        "n": "Detergente enzimático",
+        "t": "vol",
+        "per": 1
+      },
+      {
+        "k": "agua",
+        "n": "Água destilada",
+        "t": "vol",
+        "per": 999
+      }
+    ],
+    "steps": [
+      "Meça {en} de detergente enzimático.",
+      "Adicione {agua} de água destilada, misture e identifique o frasco."
+    ],
+    "tab": "prep"
+  },
+  {
+    "id": "pbs",
+    "cat": "SOLUÇÕES",
+    "name": "PBS",
+    "sub": "Soluções A e B + NaCl + água ultrapura",
+    "acc": "#ff6ec7",
+    "def": 1000,
+    "parts": [
+      {
+        "k": "a",
+        "n": "Solução A",
+        "s": "fosfato monobásico, geladeira",
+        "t": "vol",
+        "per": 33,
+        "sub": "33 mL / L"
+      },
+      {
+        "k": "b",
+        "n": "Solução B",
+        "s": "fosfato dibásico, geladeira",
+        "t": "vol",
+        "per": 67,
+        "sub": "67 mL / L"
+      },
+      {
+        "k": "nacl",
+        "n": "NaCl",
+        "t": "mass",
+        "per": 9,
+        "sub": "9 g / L"
+      },
+      {
+        "k": "agua",
+        "n": "Água ultrapura",
+        "t": "vol",
+        "per": 900,
+        "sub": "900 mL / L"
+      }
+    ],
+    "steps": [
+      "Em um garrafão estéril, misture {a} da solução A com {b} da solução B.",
+      "Adicione {nacl} de NaCl.",
+      "Complete com {agua} de água ultrapura.",
+      "Autoclave com a tampa semiaberta."
+    ],
+    "extra": "<b>Estoques (100 mL cada, geladeira):</b> A = 2,76 g de NaH₂PO₄·H₂O em 100 mL de água ultrapura. B (0,2 M) = Na₂HPO₄ em 100 mL de água ultrapura: anidro 2,84 g · heptaidratado 5,36 g · diidratado 3,56 g (conferir a forma no rótulo).",
+    "tab": "prep"
+  },
+  {
     "id": "tripsina",
     "cat": "SOLUÇÕES",
     "name": "Tripsina-EDTA",
@@ -264,148 +422,216 @@
       "Pese {trip} de tripsina e {edta} de EDTA.",
       "Dilua em {pbs} de PBS.",
       "Filtre e distribua em eppendorf."
-    ]
+    ],
+    "tab": "prep"
   },
   {
-    "id": "pbs",
-    "cat": "SOLUÇÕES",
-    "name": "PBS",
-    "sub": "Soluções A e B + água",
-    "acc": "#ff6ec7",
-    "def": 1000,
+    "id": "mttest",
+    "tab": "prep",
+    "cat": "ENSAIOS",
+    "name": "MTT estoque (5 mg/mL)",
+    "sub": "MTT em PBS · proteger da luz",
+    "acc": "#b06bff",
+    "def": 10,
     "parts": [
       {
-        "k": "a",
-        "n": "Solução A",
-        "s": "fosfato monobásico, geladeira",
-        "t": "vol",
-        "per": 33,
-        "sub": "33 mL / L"
+        "k": "mtt",
+        "n": "MTT (sal)",
+        "t": "mass",
+        "per": 5,
+        "sub": "5 mg / mL"
       },
       {
-        "k": "b",
-        "n": "Solução B",
-        "s": "fosfato dibásico, geladeira",
+        "k": "pbs",
+        "n": "PBS",
+        "s": "para dissolver",
         "t": "vol",
-        "per": 67,
-        "sub": "67 mL / L"
-      },
-      {
-        "k": "agua",
-        "n": "Água destilada",
-        "t": "vol",
-        "per": 900,
-        "sub": "900 mL / L"
+        "per": 1000,
+        "sub": "volume final"
       }
     ],
     "steps": [
-      "Em um garrafão não estéril, misture {a} da solução A com {b} da solução B.",
-      "Complete com {agua} de água destilada.",
-      "Autoclave com a tampa semi-aberta."
-    ],
-    "extra": "<b>Estoques (100 mL cada, geladeira):</b> A = 100 mL de água ultrapura + 2,76 g de NaH2PO4. B = 100 mL de água ultrapura + 2,84 g de Na2HPO4."
+      "Tare o barquinho e pese {mtt} de MTT.",
+      "Dissolva em {pbs} de PBS com movimentos circulares.",
+      "Envolva em papel alumínio (fotossensível) e identifique com fita crepe."
+    ]
   },
   {
-    "id": "alcool",
-    "cat": "LIMPEZA",
-    "name": "Álcool 70%",
-    "sub": "70/96 de álcool 96% + água",
-    "acc": "#ff5470",
-    "def": 1000,
+    "id": "mttuso",
+    "tab": "prep",
+    "cat": "ENSAIOS",
+    "name": "MTT solução de uso (0,5 mg/mL)",
+    "sub": "1 parte de estoque + 9 de meio",
+    "acc": "#b06bff",
+    "def": 10,
     "parts": [
       {
-        "k": "alc",
-        "n": "Álcool 96%",
+        "k": "est",
+        "n": "MTT estoque 5 mg/mL",
         "t": "vol",
-        "per": 729.1667
+        "per": 100,
+        "sub": "10%"
       },
       {
-        "k": "agua",
-        "n": "Água destilada",
+        "k": "meio",
+        "n": "Meio de cultura",
+        "s": "do experimento",
         "t": "rest"
       }
     ],
     "steps": [
-      "Meça {alc} de álcool 96%.",
-      "Adicione {agua} de água destilada, misture e identifique o frasco."
-    ]
+      "Misture {est} de MTT estoque com {meio} de meio de cultura.",
+      "Proteja da luz e use no mesmo dia."
+    ],
+    "extra": "Placa de 96: 100 µL por poço · placa de 24: 500 µL por poço. Esferoides: 150–200 µL por poço."
   },
   {
-    "id": "lyso",
-    "cat": "LIMPEZA",
-    "name": "Lysoform 2,5%",
-    "sub": "25 mL por litro",
-    "acc": "#c98a5b",
-    "def": 1000,
+    "id": "rz1",
+    "tab": "prep",
+    "cat": "ENSAIOS",
+    "name": "Resazurina estoque 1 (10 mg/mL)",
+    "sub": "Confira antes se já há pronto na geladeira",
+    "acc": "#ff6ec7",
+    "def": 100,
     "parts": [
       {
-        "k": "ly",
-        "n": "Lysoform",
-        "t": "vol",
-        "per": 25
+        "k": "rz",
+        "n": "Resazurina (AlamarBlue)",
+        "t": "mass",
+        "per": 10,
+        "sub": "10 mg / mL"
       },
       {
         "k": "agua",
-        "n": "Água destilada",
+        "n": "Água ultrapura",
         "t": "vol",
-        "per": 975
+        "per": 1000,
+        "sub": "volume final"
       }
     ],
     "steps": [
-      "Meça {ly} de Lysoform.",
-      "Adicione {agua} de água destilada, misture e identifique o frasco."
+      "Pese {rz} de resazurina.",
+      "Dissolva em {agua} de água ultrapura.",
+      "Filtre e guarde a −20 °C, protegido da luz."
     ]
   },
   {
-    "id": "cloro",
-    "cat": "LIMPEZA",
-    "name": "Hipoclorito 0,1%",
-    "sub": "Cloro 1% diluído 1:10",
-    "acc": "#ff7a59",
-    "def": 1000,
+    "id": "rz2",
+    "tab": "prep",
+    "cat": "ENSAIOS",
+    "name": "Resazurina estoque 2 (1 mg/mL)",
+    "sub": "2 mL de estoque 1 + 18 mL de água",
+    "acc": "#ff6ec7",
+    "def": 20,
     "parts": [
       {
-        "k": "cl",
-        "n": "Cloro a 1%",
+        "k": "e1",
+        "n": "Resazurina estoque 1 (10 mg/mL)",
         "t": "vol",
-        "per": 100
+        "per": 100,
+        "sub": "10%"
       },
       {
         "k": "agua",
-        "n": "Água destilada",
-        "t": "vol",
-        "per": 900
+        "n": "Água ultrapura filtrada",
+        "t": "rest"
       }
     ],
     "steps": [
-      "Meça {cl} de cloro a 1%.",
-      "Adicione {agua} de água destilada, misture e identifique o frasco."
+      "Misture {e1} do estoque 1 com {agua} de água ultrapura filtrada.",
+      "Proteja da luz e identifique (1 mg/mL)."
     ]
   },
   {
-    "id": "enz",
-    "cat": "LIMPEZA",
-    "name": "Detergente enzimático",
-    "sub": "1 mL por litro",
-    "acc": "#b9a06a",
-    "def": 1000,
+    "id": "rzuso",
+    "tab": "prep",
+    "cat": "ENSAIOS",
+    "name": "Resazurina solução de uso",
+    "sub": "10% estoque 2 + 90% meio completo",
+    "acc": "#ff6ec7",
+    "def": 10,
     "parts": [
       {
-        "k": "en",
-        "n": "Detergente enzimático",
+        "k": "e2",
+        "n": "Resazurina estoque 2 (1 mg/mL)",
         "t": "vol",
-        "per": 1
+        "per": 100,
+        "sub": "10%"
       },
       {
-        "k": "agua",
-        "n": "Água destilada",
-        "t": "vol",
-        "per": 999
+        "k": "meio",
+        "n": "Meio de cultura completo",
+        "t": "rest"
       }
     ],
     "steps": [
-      "Meça {en} de detergente enzimático.",
-      "Adicione {agua} de água destilada, misture e identifique o frasco."
+      "Misture {e2} do estoque 2 com {meio} de meio completo.",
+      "Proteja da luz."
     ]
+  },
+  {
+    "id": "trypan",
+    "tab": "prep",
+    "cat": "ENSAIOS",
+    "name": "Azul de Trypan 0,4%",
+    "sub": "Trypan em PBS · proteger da luz",
+    "acc": "#4d7dff",
+    "def": 100,
+    "parts": [
+      {
+        "k": "tp",
+        "n": "Azul de Trypan (pó)",
+        "s": "mancha; manusear com cuidado",
+        "t": "mass",
+        "per": 4,
+        "sub": "4 mg / mL"
+      },
+      {
+        "k": "pbs",
+        "n": "PBS",
+        "t": "vol",
+        "per": 1000,
+        "sub": "volume final"
+      }
+    ],
+    "steps": [
+      "Tare o barquinho e pese {tp} de azul de Trypan.",
+      "No fluxo, misture com {pbs} de PBS num Falcon e homogeneíze invertendo.",
+      "Envolva em alumínio, etiquete e guarde na geladeira."
+    ]
+  },
+  {
+    "id": "agarose",
+    "tab": "prep",
+    "cat": "ESFEROIDES",
+    "name": "Agarose 2%",
+    "sub": "Agarose em PBS · padrão do lab, inclusive para esferoides",
+    "acc": "#39ff88",
+    "def": 50,
+    "parts": [
+      {
+        "k": "ag",
+        "n": "Agarose",
+        "t": "mass",
+        "per": 20,
+        "sub": "20 mg / mL"
+      },
+      {
+        "k": "pbs",
+        "n": "PBS",
+        "t": "vol",
+        "per": 1000,
+        "sub": "volume final"
+      }
+    ],
+    "steps": [
+      "Pese {ag} de agarose e transfira para a garrafa de vidro (Duran).",
+      "Autoclave o pó e deixe esfriar.",
+      "No fluxo, adicione {pbs} de PBS.",
+      "Homogeneíze com movimentos circulares.",
+      "Micro-ondas por ~3 min.",
+      "Guarde identificada na geladeira."
+    ],
+    "extra": "Placa de 24 poços: 1 mL por poço."
   }
 ]

@@ -6,7 +6,7 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(function (e) { console.warn('[sw] registro falhou', e); });
 }
 
-import { initProto, renderProto } from './protocolos.js?v=6';
+import { initProto, renderProto } from './protocolos.js?v=7';
 
 // ---------- dados das receitas ----------
 // Vêm de data/receitas.json. t: 'vol' (per = µL por mL final) | 'rest' (completa o volume) | 'mass' (per = mg por mL) | 'pack' (pacotes de 1 L por mL)
@@ -63,17 +63,35 @@ function drawFlask(color) {
 var cur = S[0];
 var picks = document.getElementById('picks'), out = document.getElementById('out'), volEl = document.getElementById('vol');
 
-(function buildPicks() {
-  var cats = [], html = '';
-  S.forEach(function (s) { if (cats.indexOf(s.cat) < 0) cats.push(s.cat); });
+// Duas abas usam este mesmo painel: 'sol' (meios de cultura) e 'prep' (preparo de soluções, receitas com tab: 'prep').
+var curTab = 'sol';
+function tabOf(s) { return s.tab === 'prep' ? 'prep' : 'sol'; }
+function inTab(t) { return S.filter(function (s) { return tabOf(s) === t; }); }
+picks.innerHTML = '<label class="sel" for="sol"><select id="sol" aria-label="Solução ou meio"></select></label><p class="selsub" id="selsub"></p>';
+var solEl = document.getElementById('sol');
+function buildPicks(t) {
+  var list = inTab(t), cats = [], html = '';
+  list.forEach(function (s) { if (cats.indexOf(s.cat) < 0) cats.push(s.cat); });
   cats.forEach(function (c) {
     html += '<optgroup label="' + c + '">';
-    S.forEach(function (s) { if (s.cat === c) html += '<option value="' + s.id + '">' + (s.opt || s.name) + '</option>'; });
+    list.forEach(function (s) { if (s.cat === c) html += '<option value="' + s.id + '">' + (s.opt || s.name) + '</option>'; });
     html += '</optgroup>';
   });
-  picks.innerHTML = '<label class="sel" for="sol"><select id="sol" aria-label="Solução ou meio">' + html + '</select></label><p class="selsub" id="selsub"></p>';
-})();
-var solEl = document.getElementById('sol');
+  solEl.innerHTML = html;
+}
+function pickFor(t) {
+  var list = inTab(t), want = (store.cur || {})[t] || store.sol;
+  return list.filter(function (s) { return s.id === want; })[0] || list[0];
+}
+function switchTab(t) {
+  if (t === curTab && solEl.options.length) return;
+  if (solEl.options.length) stash(cur.id);
+  curTab = t;
+  buildPicks(t);
+  cur = pickFor(t);
+  solEl.value = cur.id;
+  restore(cur.id);
+}
 
 var presetVals = [10, 50, 100, 500, 1000];
 var presetsEl = document.getElementById('presets');
@@ -143,6 +161,7 @@ function updateXp(root) {
 solEl.addEventListener('change', function () {
   stash(cur.id);                       // guarda (só local) a receita que estava aberta
   cur = S.filter(function (s) { return s.id === solEl.value; })[0];
+  store.cur = store.cur || {}; store.cur[curTab] = cur.id;
   restore(cur.id);                     // restaura volume e marcações da nova receita
   save();
   render();
@@ -365,9 +384,9 @@ wire('conAIn', renderConA); wire('conBIn', renderConB);
 
 try { await initProto(g('modePro')); } catch (e) { console.warn('[protocolos] falha ao carregar', e); g('modePro').innerHTML = '<div class="empty px"><p>NÃO FOI POSSÍVEL CARREGAR<br>OS PROTOCOLOS</p></div>'; }
 function renderPro() { drawFlask('#ffe14d'); renderProto(); }
-var MODES = { sol: ['modeSol', render], cel: ['modeCel', renderCel], est: ['modeEst', renderEst], con: ['modeCon', renderCon], pro: ['modePro', renderPro] };
+var MODES = { sol: ['modeSol', function () { switchTab('sol'); render(); }], prep: ['modeSol', function () { switchTab('prep'); render(); }], cel: ['modeCel', renderCel], est: ['modeEst', renderEst], con: ['modeCon', renderCon], pro: ['modePro', renderPro] };
 function setMode(m) {
-  Object.keys(MODES).forEach(function (k) { g(MODES[k][0]).hidden = k !== m; });
+  Object.keys(MODES).forEach(function (k) { g(MODES[k][0]).hidden = MODES[k][0] !== MODES[m][0]; });
   Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) { t.setAttribute('aria-pressed', String(t.dataset.mode === m)); });
   curMode = m;
   save();
@@ -464,7 +483,7 @@ function applyState(scope, st, reset) {
 function restore(scope) { applyState(scope, store.rec[scope], true); }
 
 function save() {
-  try { localStorage.setItem(LS_KEY, JSON.stringify({ mode: curMode, sol: cur.id, rec: store.rec })); } catch { /* ignora */ }
+  try { localStorage.setItem(LS_KEY, JSON.stringify({ mode: curMode, sol: cur.id, cur: store.cur, rec: store.rec })); } catch { /* ignora */ }
 }
 function stash(scope) {          // grava só localmente
   var s = snapshot(scope), prev = store.rec[scope] || {};
@@ -475,8 +494,10 @@ function stash(scope) {          // grava só localmente
 function touch(scope) { stash(scope); }   // alteração do usuário: grava local
 
 // ---------- inicialização ----------
-var sv = S.filter(function (s) { return s.id === store.sol; })[0];
-if (sv) { cur = sv; solEl.value = sv.id; }
+curTab = store.mode === 'prep' ? 'prep' : 'sol';
+buildPicks(curTab);
+cur = pickFor(curTab);
+solEl.value = cur.id;
 restore(cur.id);
 applyState('cel', store.rec.cel);
 
