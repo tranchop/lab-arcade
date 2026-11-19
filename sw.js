@@ -2,7 +2,7 @@
 // Estratégia: pré-cache do app; rede primeiro (3 s) com cache de reserva para arquivos do app, para que
 // receitas atualizadas cheguem logo e, sem internet, o app abra e calcule. A sincronização com o Supabase
 // (fetch/WebSocket para *.supabase.co) NÃO passa por aqui; o app reenvia a fila quando a rede volta.
-const VERSION = 'v5';
+const VERSION = 'v6';
 const APP_CACHE = 'lab-arcade-app-' + VERSION;
 const RUNTIME_CACHE = 'lab-arcade-runtime-' + VERSION;
 const NETWORK_TIMEOUT_MS = 3000;
@@ -10,9 +10,9 @@ const NETWORK_TIMEOUT_MS = 3000;
 const PRECACHE = [
   './',
   './index.html',
-  './css/style.css',
-  './js/app.js',
-  './js/protocolos.js',
+  './css/style.css?v=6',
+  './js/app.js?v=6',
+  './js/protocolos.js?v=6',
   './data/protocolos.json',
   './data/receitas.json',
   './manifest.json',
@@ -41,7 +41,7 @@ function networkFirst(request, cacheName) {
     const timer = setTimeout(() => {
       fromCache().then((hit) => { if (hit && !settled) { settled = true; resolve(hit); } });
     }, NETWORK_TIMEOUT_MS);
-    fetch(request)
+    fetch(request.url, { cache: 'no-cache', credentials: 'same-origin' })
       .then((res) => {
         clearTimeout(timer);
         if (res.ok) { const copy = res.clone(); caches.open(cacheName).then((c) => c.put(request, copy)); }

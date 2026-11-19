@@ -162,7 +162,7 @@ function onClick(e) {
 
 export async function initProto(el) {
   box = el;
-  var r = await fetch('./data/protocolos.json');
+  var r = await fetch('./data/protocolos.json', { cache: 'no-cache' });
   if (!r.ok) throw new Error('HTTP ' + r.status);
   P = await r.json();
   st = load();
