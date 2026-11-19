@@ -214,3 +214,30 @@ footer a { color: var(--cyan); }
 .tbl tbody th { font-weight: 400; color: var(--yellow); text-align: left; }
 .tbl td { color: var(--ink); }
 .tbl td:last-child { color: var(--yellow); }
+
+/* protocolos */
+.pcard { padding: 16px; display: flex; flex-direction: column; gap: 16px; --c: var(--acc); }
+.ptext { margin: 0; font-size: 32px; line-height: 1.15; color: var(--ink); overflow-wrap: anywhere; }
+.ptimer { padding: 14px 16px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; background: var(--bg); --c: var(--line); }
+.ptimer.run { --c: var(--green); }
+.plbl { font-family: var(--f-display); font-size: 12px; line-height: 1.6; color: var(--yellow); }
+.pclock { font-family: var(--f-display); font-size: clamp(34px, 12vw, 64px); line-height: 1.2; color: var(--acc); font-variant-numeric: tabular-nums; }
+.ptimer.run .pclock { color: var(--green); }
+.ptimer .tools { justify-content: center; margin-top: 4px; }
+.pnote { margin: 0; color: var(--dim); font-size: 22px; }
+.ring { --c: var(--red) !important; animation: ringflash .5s steps(2, start) infinite; }
+.ring .pclock, .pbanner.ring span { color: var(--red); }
+@keyframes ringflash { 50% { background: #3a0a18; } }
+.pnav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.pnav .tool, .pbig { font-size: 28px; padding: 14px 18px; }
+.pbig { color: var(--bg); background: var(--yellow); box-shadow: 0 -3px 0 0 var(--yellow), 0 3px 0 0 var(--yellow), -3px 0 0 0 var(--yellow), 3px 0 0 0 var(--yellow); }
+.pbig:hover { color: var(--bg); }
+.tool:disabled { opacity: .35; cursor: default; }
+.pbanner { display: block; width: calc(100% - 8px); text-align: left; font-family: var(--f-body); font-size: 30px; color: var(--ink); border: 0; padding: 12px 16px; cursor: pointer; --c: var(--green); }
+.pbanner span { color: var(--green); font-variant-numeric: tabular-nums; }
+.pbanner small { display: block; font-size: 20px; color: var(--dim); }
+.psteps li { cursor: pointer; }
+.psteps li.past { opacity: .5; }
+.psteps li.cur { --c: var(--acc); }
+@media (prefers-reduced-motion: reduce) { .ring { animation: none; } }
+.pcard .bar { flex: none; height: 18px; }

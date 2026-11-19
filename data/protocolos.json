@@ -1,0 +1,176 @@
+[
+  {
+    "id": "trip", "cat": "Cultura Celular", "name": "Tripsinização (passagem)", "acc": "#ff9a3d",
+    "sub": "Garrafa média · garrafão: dobrar as quantidades",
+    "steps": [
+      { "t": "Tripsina no banho-maria. Materiais no fluxo com UV.", "d": 900, "lbl": "UV DO FLUXO" },
+      { "t": "Retirar o meio e adicionar 2 mL de tripsina." },
+      { "t": "Incubar na estufa a 37 °C.", "d": 300, "lbl": "TRIPSINA NA ESTUFA" },
+      { "t": "Conferir o descolamento ao microscópio. Se não soltar: jatos leves com a pipeta ou friccionar a garrafa na bancada." },
+      { "t": "Passar a tripsina para o Falcon de 15 mL e adicionar 2 mL de meio." },
+      { "t": "Centrifugar a 2800 rpm (seletor 7).", "d": 300, "lbl": "CENTRIFUGAR" },
+      { "t": "Descartar o sobrenadante e ressuspender o pellet em 2 mL de meio." },
+      { "t": "Colocar 1 mL por garrafa nova e completar com 3 mL de meio (total 4 mL por garrafa)." }
+    ]
+  },
+  {
+    "id": "desc", "cat": "Cultura Celular", "name": "Descongelamento de células", "acc": "#4dd2ff",
+    "sub": "Garrafa média · garrafão: 2 ampolas e soluções em dobro",
+    "steps": [
+      { "t": "Equipamentos no fluxo com UV.", "d": 900, "lbl": "UV DO FLUXO" },
+      { "t": "Colocar o Falcon de SFB no banho-maria." },
+      { "t": "Pegar a ampola no freezer −80 °C." },
+      { "t": "No Falcon: 3 mL de meio + 1 mL de células." },
+      { "t": "Centrifugar a 2800 rpm (seletor 7).", "d": 300, "lbl": "CENTRIFUGAR" },
+      { "t": "Descartar o sobrenadante e ressuspender em 1 mL de meio + 1 mL de SFB." },
+      { "t": "Transferir os 2 mL para a garrafa e completar com 2 mL de meio (total 4 mL)." }
+    ]
+  },
+  {
+    "id": "cong", "cat": "Cultura Celular", "name": "Congelamento de células", "acc": "#c9c9ff",
+    "sub": "Identificar as ampolas com linhagem, passagem e data",
+    "steps": [
+      { "t": "Tripsina e meio de congelamento no banho-maria. Fluxo com UV.", "d": 900, "lbl": "UV DO FLUXO" },
+      { "t": "Retirar todo o meio e adicionar 2 mL de tripsina." },
+      { "t": "Incubar na estufa a 37 °C.", "d": 300, "lbl": "TRIPSINA NA ESTUFA" },
+      { "t": "Conferir o descolamento ao microscópio. Se não soltar, friccionar a garrafa na bancada." },
+      { "t": "Passar a tripsina para o Falcon e adicionar 2 mL de meio." },
+      { "t": "Centrifugar a 2800 rpm (seletor 7).", "d": 300, "lbl": "CENTRIFUGAR" },
+      { "t": "Descartar o sobrenadante e ressuspender o pellet em 3 mL de meio de congelamento." },
+      { "t": "Colocar 1 mL por ampola, identificar e levar ao −80 °C." }
+    ]
+  },
+  {
+    "id": "plaq", "cat": "Cultura Celular", "name": "Plaqueamento de células", "acc": "#39ff88",
+    "sub": "Placa de 24 → 500 µL/poço · placa de 96 → 100 µL/poço",
+    "steps": [
+      { "t": "Tripsina no banho-maria. Materiais na UV.", "d": 900, "lbl": "UV DO FLUXO" },
+      { "t": "Retirar todo o meio e adicionar 2 mL de tripsina na garrafa." },
+      { "t": "Incubar na estufa a 37 °C.", "d": 300, "lbl": "TRIPSINA NA ESTUFA" },
+      { "t": "Conferir o descolamento ao microscópio." },
+      { "t": "Passar a tripsina para o Falcon e adicionar 2 mL de meio." },
+      { "t": "Centrifugar a 2800 rpm (seletor 7).", "d": 300, "lbl": "CENTRIFUGAR" },
+      { "t": "Descartar o sobrenadante, ressuspender em 1 mL de meio e colocar 25 µL na lâmina do Tali." },
+      { "t": "Contar no Tali (quick count, 20 fields)." },
+      { "t": "Calcular C₁V₁ = C₂V₂ na aba CÉLULAS POR mL." },
+      { "t": "Preparar no Falcon o volume calculado de meio + células e homogeneizar." },
+      { "t": "Plaquear: 500 µL/poço (placa de 24) ou 100 µL/poço (placa de 96)." }
+    ]
+  },
+  {
+    "id": "tali", "cat": "Procedimentos", "name": "Leitura no Tali", "acc": "#ff6ec7",
+    "sub": "Lado com a amostra virado para fora",
+    "steps": [
+      { "t": "Ligar: tomada → botão traseiro → botão frontal." },
+      { "t": "Conferir o lado certo da lâmina (poços para cima)." },
+      { "t": "Colocar 25 µL da suspensão em um poço." },
+      { "t": "Inserir a lâmina com o lado da amostra para fora." },
+      { "t": "Selecionar Quick count → 20 fields." },
+      { "t": "Focar no micrômetro." },
+      { "t": "No histograma de tamanho, selecionar a faixa de interesse e anotar a contagem." },
+      { "t": "Deixar a lâmina usada em água destilada por 24 h e depois secar na estufa." }
+    ]
+  },
+  {
+    "id": "mtt2d", "cat": "Ensaios", "name": "MTT 2D (monocamada)", "acc": "#b06bff",
+    "sub": "96 poços: 100 µL MTT / 100 µL DMSO · 24 poços: 500 µL / 500 µL",
+    "steps": [
+      { "t": "Retirar todo o meio dos poços." },
+      { "t": "Adicionar MTT 0,5 mg/mL (100 µL em placa de 96; 500 µL em placa de 24)." },
+      { "t": "Incubar na estufa (37 °C, 5% CO₂).", "d": 3600, "lbl": "MTT NA ESTUFA" },
+      { "t": "Remover o MTT e adicionar DMSO (mesmo volume)." },
+      { "t": "Shaker a 75 rpm (botões: circulação, geral e agitação).", "d": 1200, "lbl": "SHAKER 75 rpm" },
+      { "t": "Placa de 24: transferir 100–200 µL de cada poço para uma placa de 96." },
+      { "t": "Ler a 570 nm (referência opcional 630–690 nm). Incluir branco só com DMSO." }
+    ]
+  },
+  {
+    "id": "trypan", "cat": "Ensaios", "name": "Azul de Trypan (viabilidade em placa)", "acc": "#4d7dff",
+    "sub": "Placa de 24 poços · confirmar o comprimento de onda",
+    "steps": [
+      { "t": "Retirar todo o meio dos poços." },
+      { "t": "Filtrar o Trypan 0,4% (só o volume necessário)." },
+      { "t": "Adicionar 500 µL de Trypan por poço e levar à estufa.", "d": 3600, "lbl": "TRYPAN NA ESTUFA" },
+      { "t": "Remover o Trypan e adicionar 500 µL de PBS." },
+      { "t": "Envolver a placa em papel alumínio." },
+      { "t": "Shaker a 75 rpm.", "d": 1200, "lbl": "SHAKER 75 rpm" },
+      { "t": "Ler no espectrofotômetro." }
+    ]
+  },
+  {
+    "id": "mtt3d", "cat": "Esferoides 3D", "name": "MTT 3D (esferoides)", "acc": "#b06bff",
+    "sub": "MTT 0,5 mg/mL = 1 mL estoque + 9 mL de meio",
+    "steps": [
+      { "t": "Lavar os esferoides, transferir para placa de 96 e retirar o excesso de meio com pipeta de 200 µL." },
+      { "t": "Adicionar 150–200 µL de MTT por poço." },
+      { "t": "Incubar na estufa de CO₂ a 37 °C.", "d": 10800, "lbl": "MTT NA ESTUFA" },
+      { "t": "Retirar e descartar o MTT." },
+      { "t": "Lavar 3× com PBS e deixar sem líquido." },
+      { "t": "Adicionar 250 µL de isopropanol (esferoide submerso)." },
+      { "t": "Agitador tipo gangorra.", "d": 3600, "lbl": "GANGORRA" },
+      { "t": "Transferir 200 µL de cada poço para nova placa de 96, em duplicata, com branco de isopropanol." },
+      { "t": "Ler a 570 nm e subtrair a média do branco." }
+    ]
+  },
+  {
+    "id": "livedead", "cat": "Esferoides 3D", "name": "LIVE/DEAD em esferoides", "acc": "#39ff88",
+    "sub": "Solução: 20 µL EthD-1 + 5 µL calceína AM em 10 mL de DPBS",
+    "steps": [
+      { "t": "Lavar os esferoides com PBS e transferir para microtubo ou tubo cônico." },
+      { "t": "Centrifugar a 1000 rpm (seletor 2,5) e retirar o máximo de PBS.", "d": 300, "lbl": "CENTRIFUGAR" },
+      { "t": "Cobrir o pellet com ~100 µL de solução de trabalho. Incubar no escuro, em temperatura ambiente (3 a 6 h conforme o tamanho).", "d": 10800, "lbl": "LIVE/DEAD NO ESCURO" },
+      { "t": "Observar no microscópio de fluorescência. Prolongar a incubação se necessário." },
+      { "t": "Centrifugar a 1000 rpm.", "d": 300, "lbl": "CENTRIFUGAR" },
+      { "t": "Retirar o LIVE/DEAD e cobrir o pellet com PBS." },
+      { "t": "Centrifugar a 1000 rpm.", "d": 300, "lbl": "CENTRIFUGAR" },
+      { "t": "Analisar no microscópio de fluorescência." }
+    ]
+  },
+  {
+    "id": "mevfix", "cat": "MEV", "name": "Fixação de células para MEV", "acc": "#ffe14d",
+    "sub": "Tudo na capela · fixador 4% PA + 2,5% GA",
+    "steps": [
+      { "t": "Retirar o meio e lavar 2–3× com PBS a 37 °C." },
+      { "t": "Adicionar 1 mL de fixador por poço (placa de 24). Mínimo 1 h em temperatura ambiente (ou overnight a 4 °C).", "d": 3600, "lbl": "FIXADOR" },
+      { "t": "Descartar o fixador como resíduo químico (aldeído)." },
+      { "t": "Lavagem 1 com PBS.", "d": 300, "lbl": "PBS 1/3" },
+      { "t": "Lavagem 2 com PBS.", "d": 300, "lbl": "PBS 2/3" },
+      { "t": "Lavagem 3 com PBS.", "d": 300, "lbl": "PBS 3/3" },
+      { "t": "Se não desidratar hoje: 1 mL de PBS por poço a 4 °C, vedado (até ~1 semana)." }
+    ]
+  },
+  {
+    "id": "hmds", "cat": "MEV", "name": "Desidratação e HMDS para MEV", "acc": "#ffe14d",
+    "sub": "Tudo na capela · ponto de parada seguro: etanol 70% a 4 °C",
+    "steps": [
+      { "t": "Etanol 30%.", "d": 600, "lbl": "ETANOL 30%" },
+      { "t": "Etanol 50%.", "d": 600, "lbl": "ETANOL 50%" },
+      { "t": "Etanol 70%.", "d": 600, "lbl": "ETANOL 70%" },
+      { "t": "Etanol 90%.", "d": 600, "lbl": "ETANOL 90%" },
+      { "t": "Etanol 100% (troca 1).", "d": 600, "lbl": "ETANOL 100% 1/3" },
+      { "t": "Etanol 100% (troca 2).", "d": 600, "lbl": "ETANOL 100% 2/3" },
+      { "t": "Etanol 100% (troca 3).", "d": 600, "lbl": "ETANOL 100% 3/3" },
+      { "t": "Etanol:HMDS 1:1.", "d": 600, "lbl": "ETANOL:HMDS" },
+      { "t": "HMDS 100% (troca 1).", "d": 600, "lbl": "HMDS 1/2" },
+      { "t": "HMDS 100% (troca 2). Retirar o excesso.", "d": 600, "lbl": "HMDS 2/2" },
+      { "t": "Secar ao ar na capela, tampa entreaberta, overnight." },
+      { "t": "Metalizar (ouro ou ouro-paládio) e analisar no MEV." }
+    ]
+  },
+  {
+    "id": "map2", "cat": "Ensaios", "name": "Imunomarcação por MAP2", "acc": "#00e5ff",
+    "sub": "Pendente: diluição do 1ário e etapa de fixação",
+    "steps": [
+      { "t": "Lavar os poços com Triton 0,1% em temperatura ambiente.", "d": 600, "lbl": "TRITON 0,1%" },
+      { "t": "Incubar com solução de bloqueio (SFB 5% em Triton 0,1%).", "d": 3600, "lbl": "BLOQUEIO" },
+      { "t": "Diluir o anticorpo 1ário (MAP2, mouse) em solução de bloqueio." },
+      { "t": "Pôr 50 µL da solução com o 1ário no parafilme e colocar a lamínula em contato." },
+      { "t": "Incubar overnight na geladeira (4 °C)." },
+      { "t": "Lavar as lamínulas 3× com PBS." },
+      { "t": "Preparar o 2ário (Alexa 488) 1:100 em solução de bloqueio." },
+      { "t": "Incubar em temperatura ambiente, protegido da luz.", "d": 3600, "lbl": "2ÁRIO NO ESCURO" },
+      { "t": "Lavar os poços 3× com PBS." },
+      { "t": "Montar a lâmina com n-propil galato + DAPI." }
+    ]
+  }
+]
