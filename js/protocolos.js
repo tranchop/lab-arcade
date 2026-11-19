@@ -3,7 +3,12 @@
 // Um timer por vez; ele continua rodando se você navegar para outra etapa.
 
 var LS = 'labarcade-pro';
-var P = [], box, st, tick = null, audio = null, alarmLoop = null, lock = null;
+import { unlock, ring as ringId, stop as stopId, wake as wakeId } from './alarme.js?v=7';
+
+var P = [], box, st, tick = null;
+function ring() { ringId('pro', 880); }
+function stopRing() { stopId('pro'); }
+function wake(on) { wakeId('pro', on); }
 
 function esc(t) { return String(t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 function load() { try { return JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch { return {}; } }
@@ -17,46 +22,6 @@ function mmss(ms) {
 function durTxt(d) { return d >= 3600 ? (d / 3600).toString().replace('.', ',') + ' h' : Math.round(d / 60) + ' min'; }
 // T = timer único: { pid, step, lbl, dur, endAt (rodando) | left (pausado), ring (tocando) }
 function left(T) { return T.endAt ? T.endAt - Date.now() : T.left; }
-
-// ---------- som e vibração ----------
-function ctx() {
-  try {
-    if (!audio) audio = new (window.AudioContext || window.webkitAudioContext)();
-    if (audio.state === 'suspended') audio.resume();
-  } catch { audio = null; }
-  return audio;
-}
-function beep() {
-  var a = ctx(); if (!a) return;
-  [0, 0.18, 0.36].forEach(function (t, i) {
-    var o = a.createOscillator(), g = a.createGain(), t0 = a.currentTime + t;
-    o.type = 'square'; o.frequency.value = i === 2 ? 1320 : 880;
-    g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(0.25, t0 + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.14);
-    o.connect(g); g.connect(a.destination); o.start(t0); o.stop(t0 + 0.15);
-  });
-}
-function ring() {
-  if (alarmLoop) return;
-  var n = 0;
-  function once() {
-    beep();
-    try { if (navigator.vibrate) navigator.vibrate([400, 150, 400, 150, 400]); } catch { /* ignora */ }
-    if (++n >= 60) stopRing();   // para sozinho depois de ~90 s
-  }
-  once();
-  alarmLoop = setInterval(once, 1500);
-}
-function stopRing() {
-  if (alarmLoop) clearInterval(alarmLoop);
-  alarmLoop = null;
-  try { if (navigator.vibrate) navigator.vibrate(0); } catch { /* ignora */ }
-}
-function wake(on) {
-  try {
-    if (on && !lock && navigator.wakeLock) navigator.wakeLock.request('screen').then(function (l) { lock = l; l.addEventListener('release', function () { lock = null; }); }, function () {});
-    else if (!on && lock) { lock.release(); lock = null; }
-  } catch { /* ignora */ }
-}
 
 // ---------- timer ----------
 function loop() {
@@ -75,7 +40,7 @@ function update() {
 }
 function start(step) {
   var p = proto(), s = p.steps[step];
-  ctx(); // libera o áudio no toque do usuário (exigência do iPhone)
+  unlock(); // libera o áudio no toque do usuário (exigência do iPhone)
   var T = st.timer;
   if (T && T.pid === p.id && T.step === step) { if (!T.endAt && T.left > 0) T.endAt = Date.now() + T.left; }
   else st.timer = { pid: p.id, step: step, lbl: s.lbl || 'TIMER', dur: s.d * 1000, endAt: Date.now() + s.d * 1000, left: s.d * 1000 };

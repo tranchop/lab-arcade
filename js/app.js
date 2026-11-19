@@ -6,7 +6,8 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(function (e) { console.warn('[sw] registro falhou', e); });
 }
 
-import { initProto, renderProto } from './protocolos.js?v=6';
+import { initProto, renderProto } from './protocolos.js?v=7';
+import { initTimers, renderTimers } from './timers.js?v=7';
 
 // ---------- dados das receitas ----------
 // Vêm de data/receitas.json. t: 'vol' (per = µL por mL final) | 'rest' (completa o volume) | 'mass' (per = mg por mL) | 'pack' (pacotes de 1 L por mL)
@@ -365,7 +366,9 @@ wire('conAIn', renderConA); wire('conBIn', renderConB);
 
 try { await initProto(g('modePro')); } catch (e) { console.warn('[protocolos] falha ao carregar', e); g('modePro').innerHTML = '<div class="empty px"><p>NÃO FOI POSSÍVEL CARREGAR<br>OS PROTOCOLOS</p></div>'; }
 function renderPro() { drawFlask('#ffe14d'); renderProto(); }
-var MODES = { sol: ['modeSol', render], cel: ['modeCel', renderCel], est: ['modeEst', renderEst], con: ['modeCon', renderCon], pro: ['modePro', renderPro] };
+try { initTimers(g('modeTim')); } catch (e) { console.warn('[timers] falha ao iniciar', e); }
+function renderTim() { setAcc('#ff3df2'); renderTimers(); }
+var MODES = { sol: ['modeSol', render], cel: ['modeCel', renderCel], est: ['modeEst', renderEst], con: ['modeCon', renderCon], pro: ['modePro', renderPro], tim: ['modeTim', renderTim] };
 function setMode(m) {
   Object.keys(MODES).forEach(function (k) { g(MODES[k][0]).hidden = k !== m; });
   Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) { t.setAttribute('aria-pressed', String(t.dataset.mode === m)); });

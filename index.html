@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
-  <link rel="stylesheet" href="./css/style.css?v=6">
+  <link rel="stylesheet" href="./css/style.css?v=7">
 </head>
 <body>
 <div class="wrap">
@@ -36,6 +36,7 @@
     <button type="button" class="tab" data-mode="est" aria-pressed="false">ESTOQUE MOLAR</button>
     <button type="button" class="tab" data-mode="con" aria-pressed="false">CONCENTRAÇÃO</button>
     <button type="button" class="tab" data-mode="pro" aria-pressed="false">PROTOCOLOS</button>
+    <button type="button" class="tab" data-mode="tim" aria-pressed="false">TIMERS</button>
   </nav>
 
   <div id="modeSol" class="mode">
@@ -91,12 +92,13 @@
   <div id="modeEst" class="mode big" hidden></div>
   <div id="modeCon" class="mode big" hidden></div>
   <div id="modePro" class="mode big" hidden></div>
+  <div id="modeTim" class="mode" hidden></div>
 
   <footer>Confira sempre os valores antes de preparar.</footer>
 </div>
 <button type="button" id="up" class="up" aria-label="Voltar ao topo" hidden>&#9650;</button>
 
 <noscript><p style="color:#ffe14d;text-align:center">Ative o JavaScript para usar o Lab Arcade.</p></noscript>
-<script type="module" src="./js/app.js?v=6"></script>
+<script type="module" src="./js/app.js?v=7"></script>
 </body>
 </html>
