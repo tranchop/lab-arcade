@@ -6,7 +6,7 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(function (e) { console.warn('[sw] registro falhou', e); });
 }
 
-import { initProto, renderProto } from './protocolos.js?v=6';
+import { initProto, renderProto } from './protocolos.js?v=7';
 
 // ---------- dados das receitas ----------
 // Vêm de data/receitas.json. t: 'vol' (per = µL por mL final) | 'rest' (completa o volume) | 'mass' (per = mg por mL) | 'pack' (pacotes de 1 L por mL)

@@ -5,19 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Lab Arcade</title>
   <meta name="description" content="Calculadora de bancada de laboratório: soluções, células por mL, estoque molar e concentração.">
-  <meta name="theme-color" content="#0a0a1f">
+  <meta name="theme-color" content="#05060d">
   <meta name="color-scheme" content="dark">
   <meta name="referrer" content="no-referrer">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Lab Arcade">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
-  <link rel="stylesheet" href="./css/style.css?v=6">
+  <link rel="stylesheet" href="./css/style.css?v=7">
 </head>
 <body>
 <div class="wrap">
@@ -31,11 +29,11 @@
   </header>
 
   <nav class="tabs" aria-label="Modo">
-    <button type="button" class="tab" data-mode="sol" aria-pressed="true">SOLUÇÕES</button>
-    <button type="button" class="tab" data-mode="cel" aria-pressed="false">CÉLULAS POR mL</button>
-    <button type="button" class="tab" data-mode="est" aria-pressed="false">ESTOQUE MOLAR</button>
-    <button type="button" class="tab" data-mode="con" aria-pressed="false">CONCENTRAÇÃO</button>
-    <button type="button" class="tab" data-mode="pro" aria-pressed="false">PROTOCOLOS</button>
+    <button type="button" class="tab" data-mode="sol" aria-pressed="true" aria-label="Soluções"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></svg><span>Soluções</span></button>
+    <button type="button" class="tab" data-mode="cel" aria-pressed="false" aria-label="Células por mL"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="9" r="4"/><circle cx="16.5" cy="15.5" r="4.5"/><circle cx="8" cy="9" r="1" fill="currentColor"/><circle cx="16.5" cy="15.5" r="1.2" fill="currentColor"/></svg><span>Células</span></button>
+    <button type="button" class="tab" data-mode="est" aria-pressed="false" aria-label="Estoque molar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg><span>Estoque</span></button>
+    <button type="button" class="tab" data-mode="con" aria-pressed="false" aria-label="Concentração"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/><path d="M9 15a3 3 0 0 0 3 3"/></svg><span>Diluição</span></button>
+    <button type="button" class="tab" data-mode="pro" aria-pressed="false" aria-label="Protocolos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5v4l2.5 2M10 2.5h4M19 6l1.5-1.5"/></svg><span>Protocolos</span></button>
   </nav>
 
   <div id="modeSol" class="mode">
@@ -96,7 +94,7 @@
 </div>
 <button type="button" id="up" class="up" aria-label="Voltar ao topo" hidden>&#9650;</button>
 
-<noscript><p style="color:#ffe14d;text-align:center">Ative o JavaScript para usar o Lab Arcade.</p></noscript>
-<script type="module" src="./js/app.js?v=6"></script>
+<noscript><p style="color:#ffd60a;text-align:center">Ative o JavaScript para usar o Lab Arcade.</p></noscript>
+<script type="module" src="./js/app.js?v=7"></script>
 </body>
 </html>
