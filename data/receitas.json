@@ -129,28 +129,28 @@
     "cat": "CONGELAMENTO",
     "name": "Meio pronto",
     "opt": "Congelamento: meio pronto",
-    "sub": "95% DMSO + 5% SFB",
+    "sub": "95% SFB + 5% DMSO",
     "acc": "#8fd0ff",
     "def": 10,
     "tubos": true,
     "parts": [
       {
-        "k": "dmso",
-        "n": "DMSO",
+        "k": "sfb",
+        "n": "SFB",
         "t": "vol",
         "per": 950
       },
       {
-        "k": "sfb",
-        "n": "SFB",
+        "k": "dmso",
+        "n": "DMSO",
         "t": "vol",
         "per": 50
       }
     ],
     "steps": [
       "Trabalhe no fluxo laminar, com tubo Falcon de 15 ou 50 mL.",
-      "Pipete {dmso} de DMSO.",
-      "Adicione {sfb} de SFB.",
+      "Pipete {sfb} de SFB.",
+      "Adicione {dmso} de DMSO.",
       "Homogeneíze e distribua 1 a 1,5 mL por tubo de congelamento."
     ]
   },
