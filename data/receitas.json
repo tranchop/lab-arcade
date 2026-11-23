@@ -159,35 +159,35 @@
     "cat": "CONGELAMENTO",
     "name": "Meio preparado",
     "opt": "Congelamento: meio preparado",
-    "sub": "50% meio + 40% DMSO + 10% SFB",
+    "sub": "50% suspensão celular + 40% SFB + 10% DMSO",
     "acc": "#c8b6ff",
     "def": 10,
     "parts": [
       {
         "k": "meio",
-        "n": "Meio de cultura",
+        "n": "Suspensão celular em meio completo",
         "t": "vol",
         "per": 500
-      },
-      {
-        "k": "dmso",
-        "n": "DMSO",
-        "t": "vol",
-        "per": 400
       },
       {
         "k": "sfb",
         "n": "SFB",
         "t": "vol",
+        "per": 400
+      },
+      {
+        "k": "dmso",
+        "n": "DMSO",
+        "t": "vol",
         "per": 100
       }
     ],
     "steps": [
-      "Trabalhe no fluxo laminar, com tubo Falcon de 15 ou 50 mL.",
-      "Mantenha o meio de cultura refrigerado, no gelo.",
-      "Pipete {meio} de meio de cultura.",
-      "Adicione {dmso} de DMSO.",
-      "Adicione {sfb} de SFB e homogeneíze."
+      "Trabalhe no fluxo laminar, com tubo Falcon de 15 ou 50 mL, tudo gelado.",
+      "Em um tubo, prepare a mistura 2×: {sfb} de SFB + {dmso} de DMSO.",
+      "Ressuspenda o pellet em {meio} de meio completo.",
+      "Adicione a mistura 2× gota a gota à suspensão, homogeneizando suavemente.",
+      "Distribua 1 mL por criotubo, leve ao Mr. Frosty a −80 °C e, após 24 h, transfira para o N₂ líquido."
     ]
   },
   {
